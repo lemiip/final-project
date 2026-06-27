@@ -1,0 +1,272 @@
+[
+    {
+        "id":1,
+        "title":"UNOVE",
+        "text":"UNOVE Deep Damage Repair Hair Mask (Treatment / Hair Pack) 320mL Double Pack (5 Options)",
+        "discount":"US$49.00",
+        "category":"Skincare",
+        "price":"US$33.02",
+        "image":"/bannerimg/4629e142-4168-476a-a654-ee76429b9f8a.webp",
+        "rating":4.8
+
+    },
+    {
+        "id":2,
+        "title":"Teazen ",
+        "text":"Teazen Iced Tea #Watermelon Oolong Tea 40T",
+        "category":"Skincare",
+        "skin":"dry",
+        "price":"US$19.00",
+        "image":"/bannerimg/dd71ff24-726d-4454-a5a7-56941960726a.webp",
+        "rating":4.8
+    },
+    {
+        "id":3,
+        "title":"MEDIHEAL",
+        "text":"MEDIHEAL Toner Pad 100+100 Pads Double Set (+Portable Case) (7 Options)",
+        "discount":"US$47.00",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "price":"US$34.04",
+        "image":"/bannerimg/85c58a2e-5084-4496-8d5c-1e9106f16caf.webp",
+        "rating":4.9
+
+    },
+    {
+        "id":4,
+        "title":"REJURAN",
+        "text":"REJURAN Inner Dot DNA Glow Jelly 14 Sticks (14-day supply)",
+        "category":"Makeup",
+        "price":"US$43.00",
+        "image":"/bannerimg/9a6f9ecd-e3a6-441c-bc42-549ad5bcf8e6.webp",
+        "rating":4.7
+    },
+     {
+        "id":5,
+        "title":"Purito Seoul",
+        "text":"Purito Seoul Daily Soft Touch Sunscreen 60ml Double Pack (+Cleanser 30ml)",
+        "discount":"US$33.00",
+        "price":"US$29.70",
+        "category":"Skincare",
+        "skin":"all skin types",
+        "image":"/bannerimg/1a13e0a3-950b-4de6-a6aa-6bc68eebfb1c.webp",
+        "rating":4.9
+    },
+    {
+        "id":6,
+        "title":"Aheb",
+        "text":"Aheb Curl & Shine Set (All-Day Curling Stick + Chrome Stick)",
+        "discount":"US$85.00",
+        "price":"US$58.90",
+        "category":"Makeup",
+        "image":"/bannerimg/169d468c-0846-45a2-b75f-8298dea3714b.webp",
+        "rating":4.8
+    },
+    {
+        "id":7,
+        "title":"Anua",
+        "text":"Anua Niacinamide 10 TXA 4 Dark Spot Correcting Serum 30ml*2ea",
+        "discount":"US$92.86",
+        "price":"US$39.89",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/09077532-d06d-47ca-9669-879720b29ae1.webp",
+        "rating":4.7
+    },
+    {
+        "id":8,
+        "title":"espoir",
+        "text":"espoir BB Derma Cover Blemish Balm SPF50+ PA++++ 40g (3 Shades)",
+        "discount":"US$35.00",
+        "price":"US$27.88",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/a8d3f36d-8133-4e7b-abdb-ac4e526ab7a8.webp",
+        "rating":4.7
+    },
+    {
+        "id":9,
+        "title":"BANILA CO",
+        "text":"BANILA CO Clean It Zero Cleansing Balm 100ml Double Pack (+3ml*4ea+Lip & Eye Remover 100ml) (2 Options)",
+        "discount":"US$47.00",
+        "price":"US$29.25",
+        "category":"Skincare",
+        "skin":"oily",
+        "image":"/bannerimg/c1f96ab4-4fd8-4749-a671-d97c67584c93.webp",
+        "rating":4.9
+    },
+    {
+        "id":10,
+        "title":"d'Alba",
+        "text":"d'Alba [PINK CORRECTING] Waterfull Tone-Up Sun Cream Duo Set (65ml+65ml)",
+        "discount":"US$76.00",
+        "price":"US$46.64",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/5d41c0a3-2d56-4ded-a4ea-0e78b85f36a6.webp",
+        "rating":5.00
+    },
+     {
+        "id":11,
+        "title":"ROUND LAB",
+        "text":"ROUND LAB Birch Juice Moisturizing Sun Serum 50ml+50ml Set (+8ml)",
+        "discount":"US$42.00",
+        "category":"Skincare",
+        "price":"US$29.21",
+        "image":"/bannerimg/7a6448f7-c10f-48f5-af40-e6e967f547d8.webp",
+        "rating":4.8
+
+    },
+    {
+        "id":12,
+        "title":"FOODOLOGY",
+        "text":"FOODOLOGY Burningology D-day 3.8g*5 Packs (5-day supply)",
+        "discount":"US$22.00",
+        "category":"Skincare",
+        "skin":"dry",
+        "price":"US$19.20",
+        "image":"/bannerimg/e1f4e32f-8096-41c1-b499-a0f8da831f3e.webp",
+        "rating":4.5
+    },
+    {
+        "id":13,
+        "title":"AXIS-Y",
+        "text":"AXIS-Y Dark Spot Correcting Glow Toner 125ml",
+        "discount":"US$33.00",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "price":"US$21.49",
+        "image":"/bannerimg/d17a4199-9fb3-4533-8a22-00521576cb5e.webp",
+        "rating":4.9
+
+    },
+    {
+        "id":14,
+        "title":"Beauty of Joseon",
+        "text":"Beauty of Joseon Relief Sun Rice+Probiotics 50ml Triple Set",
+        "discount":"US$39.00",
+        "category":"Makeup",
+        "price":"US$38.49",
+        "image":"/bannerimg/9d8c3ec4-3884-4a38-ac6c-eb7da74e5473.webp",
+        "rating":4.7
+    },
+     {
+        "id":15,
+        "title":"Purito Seoul",
+        "text":"Purito Seoul Daily Soft Touch Sunscreen 60ml Double Pack (+Cleanser 30ml)",
+        "discount":"US$33.00",
+        "price":"US$29.70",
+        "category":"Skincare",
+        "skin":"all skin types",
+        "image":"/bannerimg/1a13e0a3-950b-4de6-a6aa-6bc68eebfb1c.webp",
+        "rating":4.9
+    },
+    {
+        "id":16,
+        "title":"goodal",
+        "text":"[Teletubbies EDITION] goodal Heartleaf Calming Moisture Sun Cream 50ml 1+1 Set (+ Random Figure 1 of 4)",
+        "discount":"US$26.00",
+        "price":"US$22.33",
+        "category":"Makeup",
+        "image":"/bannerimg/5e3023d1-10ff-4e2a-a716-a542113bf2fc.webp",
+        "rating":4.8
+    },
+    {
+        "id":17,
+        "title":"Torriden",
+        "text":"[Upgraded] Torriden Dive In Low Molecular Hyaluronic Acid Mask 20ea",
+        "discount":"US$70.00",
+        "price":"US$35.00",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/505039da-0202-4d3f-8b29-96ad48ecebd7.webp",
+        "rating":4.7
+    },
+    {
+        "id":18,
+        "title":"FOODOLOGY",
+        "text":"FOODOLOGY Talksology Cleanse Vium PRO 50ml*6 Vials (6 Servings)",
+        "discount":"US$27.00",
+        "price":"US$24.16",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/e4b125e9-55af-42da-93db-501d21b430c0.webp",
+        "rating":4.7
+    },
+    {
+        "id":19,
+        "title":"AESTURA",
+        "text":"AESTURA Atobarrier 365 Cream 80mL",
+        "discount":"US$44.00",
+        "price":"US$39.60",
+        "category":"Skincare",
+        "skin":"oily",
+        "image":"/bannerimg/80ed7799-c56a-4351-a814-16097ad1a702.webp",
+        "rating":4.9
+    },
+    {
+        "id":20,
+        "title":"FOODOLOGY",
+        "text":"FOODOLOGY Apple Cider Vinegar Jelly #Peach 2500mg*10 Sticks (10-day supply)",
+        "discount":"US$50.00",
+        "price":"US$26.62",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/3408213f-ad04-4e3e-b2a8-6745a5ceb576.webp",
+        "rating":5.00
+    },
+    {
+        "id":21,
+        "title":"KSECRET",
+        "text":"KSECRET Seoul 1988 Advanced Retinal Shot 15ml",
+        "discount":"US$21.00",
+        "price":"US$13.23",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/2afb392f-5c8a-4654-a4cd-50cee6006abb.webp",
+        "rating":4.9
+    },
+    {
+        "id":22,
+        "title":"LATIB",
+        "text":"LATIB Glutathione White Tomato Shot 14ea",
+        "discount":"US$46.00",
+        "price":"US$43.70",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/610314f1-6c6e-4b5b-9a86-be81aa8c4194.webp",
+        "rating":4.7
+    },
+    {
+        "id":23,
+        "title":"ILLIYOON",
+        "text":"ILLIYOON Fresh Moisture Scrub Wash 400ml*2ea Set",
+        "price":"US$30.00",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/085ade32-784e-4367-b53c-d5297c02d805.webp",
+        "rating":4.8
+    },
+    {
+        "id":24,
+        "title":"SKINFOOD",
+        "text":"SKINFOOD Carrot Carotene Calming Water Pad 60P Double Pack (+Carrot PDRN Pad 2P*3ea)",
+        "discount":"US$49.00",
+        "price":"US$30.56",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/5e07177a-b818-4766-a2ae-b3bb0fa9a5c3.webp",
+        "rating":4.8
+    },
+    {
+        "id":25,
+        "title":"UNOVE",
+        "text":"UNOVE Glow Hand Cream 40ml (3 Options)",
+        "discount":"US$18.00",
+        "price":"US$15.48",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/01f1fc47-6141-4b36-a838-f467699ac64a.webp",
+        "rating":4.7
+    }
+]

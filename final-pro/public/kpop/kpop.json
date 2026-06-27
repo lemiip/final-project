@@ -1,0 +1,75 @@
+[
+    {
+        "id":1,
+        "artist":"CHOI YOOJUNG",
+        "album":"CHOI YOOJUNG - 2nd Single Album [Perfect Target]",
+        "price":"US$24.00",
+        "image":"/bannerimg/c4e0b246-4061-4e44-bb85-befc981b6ba7.webp"
+    },
+     {
+        "id":2,
+        "artist":"BTS",
+        "album":"BTS - ARIRANG (Rooted in Korea + Rooted in Music + Living Legend) (3 in 1 Set)",
+        "price":"US$53.30",
+        "rating":4.7,
+        "image":"/bannerimg/85a8d970-02b4-4c89-9939-eee17c7fa498.webp"
+    },
+    {
+        "id":3,
+        "artist":"BTS",
+        "album":"BTS - ARIRANG (Standard Vinyl) (8 in 1 Set)",
+        "price":"US$237.96",
+        "rating":5.00,
+        "image":"/bannerimg/7d923b6c-3eb7-4279-9437-d6f172e2ec8a.webp"
+    },
+    {
+        "id":4,
+        "artist":"CORTIS",
+        "album":"[Random] CORTIS - The 2nd EP [GREENGREEN] (CORTIS Ball ver.)",
+        "price":"US$30.00",
+        "image":"/bannerimg/e847b28d-9deb-4101-a567-d7a2c8ba8ab3.webp"
+    },
+    {
+        "id":5,
+        "artist":"CORTIS",
+        "album":"CORTIS - The 2nd EP [GREENGREEN] ('Blue Lips' Lip Balm ver.)",
+        "price":"US$35.00",
+        "image":"/bannerimg/29c1b7ed-ad21-4d55-8357-fbfd5976b49d.webp"
+    },
+    {
+        "id":6,
+        "artist":"ATEEZ",
+        "album":"[Random] ATEEZ - 13th Mini Album [GOLDEN HOUR : Part.4] (A / Diary / Z ver.)",
+        "price":"US$22.00",
+        "image":"/bannerimg/b931f4b0-e0b7-4e32-8ac1-41e21b1f2f02.webp"
+    },
+    {
+        "id":7,
+        "artist":"BLACKPINK",
+        "album":"BLACKPINK - 3rd Mini Album [DEADLINE] (Mood Light ver.)",
+        "price":"US$69.00",
+        "image":"/bannerimg/9f140652-df27-4c77-abd9-46fa1faafebd.webp"
+    },
+    {
+        "id":8,
+        "artist":"BABYMONSTER",
+        "album":"BABYMONSTER - 2nd Mini Album [WE GO UP] (Postcard ver.)",
+        "price":"US$19.00",
+        "image":"/bannerimg/d2044bd0-7e3a-4c2b-98df-9e7ce6ecbd2d.webp"
+    },
+    {
+        "id":9,
+        "artist":"STRAY KIDS",
+        "album":"STRAY KIDS - ODDINARY (SCANNING VER. / MASK OFF VER.) (STANDARD VER.)",
+        "price":"US$16.10",
+        "rating":5.00,
+        "image":"/bannerimg/e87bf33a-f764-4366-bca7-997c520e6bbe.webp"
+    },
+    {
+        "id":10,
+        "artist":"SEVENTEEN",
+        "album":"V8 - 1st Mini Album [V8] (Compact ver.)",
+        "price":"US$15.00",
+        "image":"/bannerimg/adbaf517-0318-4633-af89-4352d09c3b64.webp"
+    }
+]

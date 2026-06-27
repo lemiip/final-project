@@ -1,0 +1,74 @@
+[
+    {
+        "id":1,
+        "title":"ongredients Super Deal 4 Days Only!",
+        "text":"Up to 57% OFF Get a Free Best-Seller Travel Kit! ",
+        "img":"/bannerimg/63bf6ddd-3f14-499c-a292-9dc3e4bee924.webp"
+    },
+    {
+        "id":2,
+        "title":"Advanced Derma Redefined Skincare",
+        "text":"Powered by Pharmaceutical Expertise",
+        "img":"/bannerimg/456d153f-ac9e-4907-a077-17dc38af152c.webp"
+    },
+    {
+        "id":3,
+        "title":"Buble up Fresh Glow Starts",
+        "text":"More Coupons & Gifts",
+        "img":"/bannerimg/0215e386-9efa-40e6-afb8-e90d7cacf971.webp"
+    },
+    {
+        "id":4,
+        "title":"Get Ready For UV Care",
+        "text":"Daily UV Protection Starts Now",
+        "img":"/bannerimg/1fe4380b-1077-460e-a715-bbc43eb5141d.webp"
+    },
+    {
+        "id":5,
+        "title":"Glowy & Jelly Juicy Color Shine",
+        "text":"Special Gift & Extra Coupon",
+        "img":"/bannerimg/6abc62ea-97eb-478d-a6b8-26aa807b79a1.webp"
+    },
+    {
+        "id":6,
+        "title":"CLEANSE,STRENGHTEN,SOFTEN",
+        "text":"Next Level Haircare for This Summer",
+        "img":"/bannerimg/677ac406-687c-4a0a-9b9a-7463cccd0d43.webp"
+    },
+    {
+        "id":7,
+        "title":"Soft Rosy Color & Syrup Volume",
+        "text":"Special Gift!",
+        "img":"/bannerimg/9035c586-7e40-4d51-81ad-2b8cc0ebc7c6.webp"
+    },
+    {
+        "id":8,
+        "title":"Daily UV Shield Glow Every Day",
+        "text":"More Coupons & Gifts",
+        "img":"/bannerimg/ad0eecdf-37c9-49c4-b479-4c434ef95c41.webp"
+    },
+    {
+        "id":9,
+        "title":"WELLNESS CURTAIN CALL",
+        "text":"One More Round of Self-Care ",
+        "img":"/bannerimg/cb14b4c5-fe95-4691-9acf-e590db761c67.webp"
+    },
+    {
+        "id":10,
+        "title":"SCENT-SATIONAL Body Care",
+        "text":"One More Round of Self-Care ",
+        "img":"/bannerimg/87e6b1ca-69ba-4ff3-95c1-c4c225abd968.webp"
+    },
+    {
+        "id":11,
+        "title":"Protect your gut health!",
+        "text":"Korea's No.1 Probiotics",
+        "img":"/bannerimg/c416acaf-5a55-4104-a26e-adc1e902d096.webp"
+    },
+    {
+         "id":12,
+        "title":"Aqua Layering Hydrate to Beat Heat",
+        "text":"Extra Coupons & Gifts",
+        "img":"/bannerimg/d3603312-cc97-446c-b598-ec269c66d8c1.webp"
+    }
+]

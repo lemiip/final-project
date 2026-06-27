@@ -1,0 +1,111 @@
+[
+    {
+        "id":1,
+        "title":"ROUND LAB",
+        "text":"ROUND LAB Birch Juice Moisturizing Sun Serum 50ml+50ml Set (+8ml)",
+        "discount":"US$42.00",
+        "category":"Skincare",
+        "price":"US$29.21",
+        "image":"/bannerimg/7a6448f7-c10f-48f5-af40-e6e967f547d8.webp",
+        "rating":4.8
+
+    },
+    {
+        "id":2,
+        "title":"FOODOLOGY",
+        "text":"FOODOLOGY Burningology D-day 3.8g*5 Packs (5-day supply)",
+        "discount":"US$22.00",
+        "category":"Skincare",
+        "skin":"dry",
+        "price":"US$19.20",
+        "image":"/bannerimg/e1f4e32f-8096-41c1-b499-a0f8da831f3e.webp",
+        "rating":4.5
+    },
+    {
+        "id":3,
+        "title":"MEDIHEAL",
+        "text":"MEDIHEAL Toner Pad 100+100 Pads Double Set (+Portable Case) (7 Options)",
+        "discount":"US$47.00",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "price":"US$34.04",
+        "image":"/bannerimg/85c58a2e-5084-4496-8d5c-1e9106f16caf.webp",
+        "rating":4.9
+
+    },
+    {
+        "id":4,
+        "title":"Beauty of Joseon",
+        "text":"Beauty of Joseon Relief Sun Rice+Probiotics 50ml Triple Set",
+        "discount":"US$39.00",
+        "category":"Makeup",
+        "price":"US$38.49",
+        "image":"/bannerimg/9d8c3ec4-3884-4a38-ac6c-eb7da74e5473.webp",
+        "rating":4.7
+    },
+     {
+        "id":5,
+        "title":"Purito Seoul",
+        "text":"Purito Seoul Daily Soft Touch Sunscreen 60ml Double Pack (+Cleanser 30ml)",
+        "discount":"US$33.00",
+        "price":"US$29.70",
+        "category":"Skincare",
+        "skin":"all skin types",
+        "image":"/bannerimg/1a13e0a3-950b-4de6-a6aa-6bc68eebfb1c.webp",
+        "rating":4.9
+    },
+    {
+        "id":6,
+        "title":"goodal",
+        "text":"[Teletubbies EDITION] goodal Heartleaf Calming Moisture Sun Cream 50ml 1+1 Set (+ Random Figure 1 of 4)",
+        "discount":"US$26.00",
+        "price":"US$22.33",
+        "category":"Makeup",
+        "image":"/bannerimg/5e3023d1-10ff-4e2a-a716-a542113bf2fc.webp",
+        "rating":4.8
+    },
+    {
+        "id":7,
+        "title":"Anua",
+        "text":"Anua Niacinamide 10 TXA 4 Dark Spot Correcting Serum 30ml*2ea",
+        "discount":"US$92.86",
+        "price":"US$39.89",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/09077532-d06d-47ca-9669-879720b29ae1.webp",
+        "rating":4.7
+    },
+    {
+        "id":8,
+        "title":"FOODOLOGY",
+        "text":"FOODOLOGY Talksology Cleanse Vium PRO 50ml*6 Vials (6 Servings)",
+        "discount":"US$27.00",
+        "price":"US$24.16",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/e4b125e9-55af-42da-93db-501d21b430c0.webp",
+        "rating":4.7
+    },
+    {
+        "id":9,
+        "title":"AESTURA",
+        "text":"AESTURA Atobarrier 365 Cream 80mL",
+        "discount":"US$44.00",
+        "price":"US$39.60",
+        "category":"Skincare",
+        "skin":"oily",
+        "image":"/bannerimg/80ed7799-c56a-4351-a814-16097ad1a702.webp",
+        "rating":4.9
+    },
+    {
+        "id":10,
+        "title":"d'Alba",
+        "text":"d'Alba [PINK CORRECTING] Waterfull Tone-Up Sun Cream Duo Set (65ml+65ml)",
+        "discount":"US$76.00",
+        "price":"US$46.64",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/5d41c0a3-2d56-4ded-a4ea-0e78b85f36a6.webp",
+        "rating":5.00
+    }
+]

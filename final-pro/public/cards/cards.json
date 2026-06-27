@@ -1,0 +1,111 @@
+[
+    {
+        "id":1,
+        "title":"FOODOLOGY",
+        "text":"FOODOLOGY Coleology Cutting Jelly 30 Sticks (30-day supply)",
+        "discount":"US$61.75",
+        "category":"Skincare",
+        "price":"US$45.21",
+        "image":"/bannerimg/a95875d8-5ca0-4da9-80a6-e26858da60ea.webp",
+        "rating":4.7
+
+    },
+    {
+        "id":2,
+        "title":"Anua",
+        "text":"[LIMITED GIFT: PDRN Cream 30ml] Anua PDRN Hyaluronic Capsule 100 Serum 30ml Double Set (+Mask Sheet 1ea)",
+        "discount":"US$95.96",
+        "category":"Skincare",
+        "skin":"dry",
+        "price":"US$46.08",
+        "image":"/bannerimg/2416db0f-59c1-4309-8a90-044693354bd0.webp",
+        "rating":4.7
+    },
+    {
+        "id":3,
+        "title":"MEDIHEAL",
+        "text":"MEDIHEAL Toner Pad 100+100 Pads Double Set (+Portable Case) (7 Options)",
+        "discount":"US$47.00",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "price":"US$34.04",
+        "image":"/bannerimg/85c58a2e-5084-4496-8d5c-1e9106f16caf.webp",
+        "rating":4.9
+
+    },
+    {
+        "id":4,
+        "title":"Losy Kim",
+        "text":"Losy Kim PDRN Tinted Lip Ampoule (Set/Single) (13 Colors)",
+        "discount":"US$23.00",
+        "category":"Makeup",
+        "price":"US$19.25",
+        "image":"/bannerimg/18dee254-0ed4-4961-98d1-10ffe952a438.webp",
+        "rating":4.7
+    },
+     {
+        "id":5,
+        "title":"Purito Seoul",
+        "text":"Purito Seoul Daily Soft Touch Sunscreen 60ml Double Pack (+Cleanser 30ml)",
+        "discount":"US$33.00",
+        "price":"US$29.70",
+        "category":"Skincare",
+        "skin":"all skin types",
+        "image":"/bannerimg/1a13e0a3-950b-4de6-a6aa-6bc68eebfb1c.webp",
+        "rating":4.9
+    },
+    {
+        "id":6,
+        "title":"WAKEMAKE",
+        "text":"[HELLO KITTY] WAKEMAKE Soft Blurring Eye Palette (4 Options)",
+        "discount":"US$38.00",
+        "price":"US$26.60",
+        "category":"Makeup",
+        "image":"/bannerimg/0e387d00-9bf9-488e-8fee-e371f1b14e2e.webp",
+        "rating":4.8
+    },
+    {
+        "id":7,
+        "title":"Anua",
+        "text":"Anua Niacinamide 10 TXA 4 Dark Spot Correcting Serum 30ml*2ea",
+        "discount":"US$92.86",
+        "price":"US$39.89",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/09077532-d06d-47ca-9669-879720b29ae1.webp",
+        "rating":4.7
+    },
+    {
+        "id":8,
+        "title":"celimax",
+        "text":"celimax Retinal Shot Tightening Booster 15ml Set (+3ml)",
+        "discount":"US$24.00",
+        "price":"US$18.48",
+        "category":"Skincare",
+        "skin":"dry and sensitive",
+        "image":"/bannerimg/07fa8fb7-a6e6-460a-974d-7dc8bc4eae97.webp",
+        "rating":4.7
+    },
+    {
+        "id":9,
+        "title":"AESTURA",
+        "text":"AESTURA Atobarrier 365 Cream 80mL",
+        "discount":"US$44.00",
+        "price":"US$39.60",
+        "category":"Skincare",
+        "skin":"oily",
+        "image":"/bannerimg/80ed7799-c56a-4351-a814-16097ad1a702.webp",
+        "rating":4.9
+    },
+    {
+        "id":10,
+        "title":"d'Alba",
+        "text":"d'Alba [PINK CORRECTING] Waterfull Tone-Up Sun Cream Duo Set (65ml+65ml)",
+        "discount":"US$76.00",
+        "price":"US$46.64",
+        "category":"Suncare",
+        "skin":"oily",
+        "image":"/bannerimg/5d41c0a3-2d56-4ded-a4ea-0e78b85f36a6.webp",
+        "rating":5.00
+    }
+]
