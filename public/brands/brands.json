@@ -1,0 +1,39 @@
+[
+    {
+        "id":1,
+        "title":"Get Summer Ready",
+        "text":"Simple & Effective Slimming ✨",
+        "image":"/bannerimg/805e484d-2a97-49e9-861c-960e9746aba9.webp"
+    },
+    {
+        "id":2,
+        "title":"tooq",
+        "text":"tooq Bestsellers in OY Exclusive Set 💗",
+        "image":"/bannerimg/b19349ef-7dd9-4413-af94-548c641e545e.webp"
+    },
+    {
+        "id":3,
+        "title":"What's In My Gym Bag ? ",
+        "text":"Grab-And-Go Energy Essentials",
+        "image":"/bannerimg/09f494e1-95a2-43eb-924e-50c0394347ca.webp"
+    },
+    {
+        "id":4,
+        "title":" 💜 UNOVE 💜",
+        "text":"Rising Brand Week Enjoy Extra Coupons and Gifts",
+        "image":"/bannerimg/7d73ad0a-2d36-4be1-9281-ae2ba1a86982.webp"
+    },
+    {
+        "id":5,
+        "title":" Power Ingredients",
+        "text":"Proven Results",
+        "image":"/bannerimg/07a10de6-a0c3-4bbc-b17e-a86a64253e0e.webp"
+    },
+    {
+        "id":6,
+        "title":" COSRX",
+        "text":"COSRX's 5 Peptide PDRN Vitalizing Care",
+        "image":"/bannerimg/6dda0f9f-5245-4082-87c5-cb865b710ba3.webp"
+    }
+
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id":1,
+    "title":"UNOVE",
+    "video":"/bannerimg/59627309-8aff-4a52-91fe-d76ca51c8c20.mp4",
+    "products":[
+      {
+        "id":1,
+        "name":"UNOVE Deep Damage Repair Hair Mask",
+        "image":"/bannerimg/44eb5bcc-36bc-4297-b5d1-e81eb45fbb40.webp",
+        "discount":"US$49.00-US$72.00",
+        "price":"US$33.02-US$64.98"
+      },
+      {
+        "id":2,
+        "name":"UNOVE Deep Damage Repair Shampoo 500g",
+        "image":"/bannerimg/c3887cef-0baf-4782-9eed-1439b627130d.webp",
+        "discount":"US$40.00",
+        "price":"US$29.94"
+      },
+      {
+        "id":3,
+        "name":"UNOVE Silk Oil Essence",
+        "image":"/bannerimg/1b089ce6-daf4-4c5f-ab10-e6484f027858.webp",
+        "discount":"US$41.00-US$50.00",
+        "price":"US$32.15-US$45.12"
+      }
+    ]
+  }
+]

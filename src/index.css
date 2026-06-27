@@ -1,0 +1,24 @@
+@import "tailwindcss";
+body {
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+}
+@keyframes perexod{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-40px);
+  }
+}
+/* .pere-xod{
+  animation: perexod 1.2s ease-out forwards;
+
+} */
+
+
+.swiper-slide-active .pere-xod {
+  animation:  perexod 1.5s ease forwards;
+}
+.swiper-slide-active .swipe-xod{
+  animation:  perexod 2.2s ease forwards;
+}
