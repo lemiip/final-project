@@ -4,7 +4,7 @@ import { Navigation } from "swiper/modules";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
 import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
-function Kpop(){
+function Kpop({ onAddToCart }){
     const[kpop,setKpop]=useState([])
     useEffect(()=>{
         fetchPublicJson("/kpop/kpop.json")
@@ -56,6 +56,7 @@ function Kpop(){
             <div className="relative">
             <img
             src={publicUrl(pop.image)}
+            alt={pop.album}
             className="
             w-full
             h-[220px]
@@ -75,7 +76,21 @@ function Kpop(){
             ">
             {pop.artist}
             </p>
-              <button className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl">
+              <button
+                className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl"
+                type="button"
+                aria-label="Add to cart"
+                title="Add to cart"
+                onClick={() => onAddToCart({
+                  id: `K-POP-${pop.id}`,
+                  source: "K-POP",
+                  title: pop.artist,
+                  text: pop.album,
+                  image: pop.image,
+                  price: pop.price,
+                  rating: pop.rating,
+                })}
+              >
                 <HiOutlineShoppingBag />
               </button>
             </div>
@@ -102,6 +117,7 @@ function Kpop(){
             {pop.price}
             </p>
             
+            {pop.rating && (
             <p className="
             text-gray-400
             mt-4
@@ -111,6 +127,7 @@ function Kpop(){
             "><TiStarFullOutline className="mt-1"/>
             {pop.rating}
             </p>
+            )}
             </div>
             
             

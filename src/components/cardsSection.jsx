@@ -5,7 +5,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
 import { PiGreaterThanLight } from "react-icons/pi";
 import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
-function CardsSection(){
+function CardsSection({ onAddToCart }){
   const[cards,setCards]=useState([])
   useEffect(()=>{
    
@@ -85,7 +85,22 @@ flex-1
 ">
 {card.title}
 </p>
-  <button className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl">
+  <button
+    className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl"
+    type="button"
+    aria-label="Add to cart"
+    title="Add to cart"
+    onClick={() => onAddToCart({
+      id: `Best Sellers-${card.id}`,
+      source: "Best Sellers",
+      title: card.title,
+      text: card.text,
+      image: card.image,
+      discount: card.discount,
+      price: card.price,
+      rating: card.rating,
+    })}
+  >
     <HiOutlineShoppingBag />
   </button>
 </div>
@@ -140,7 +155,7 @@ cursor-pointer
 
 </Swiper>
     <div className="flex justify-center items-center mt-5">
-        <button className="border text-emerald-900 border-lime-500 rounded flex justify-center items-center gap-2 mt-8 w-[160px] h-[50px] hover:bg-lime-200">View More<PiGreaterThanLight className="mt-1" /></button>
+        <a href="#/products" className="border text-emerald-900 border-lime-500 rounded flex justify-center items-center gap-2 mt-8 w-[160px] h-[50px] hover:bg-lime-200">View More<PiGreaterThanLight className="mt-1" /></a>
     </div>
         </div>
     )

@@ -5,7 +5,7 @@ import { Navigation } from "swiper/modules";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
 import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
-function AIRecommendation(){
+function AIRecommendation({ onAddToCart }){
     const[recommend,setRecommend]=useState([])
     useEffect(()=>{
         fetchPublicJson("/recommend/recommend.json")
@@ -86,7 +86,22 @@ flex-1
 ">
 {recom.title}
 </p>
-  <button className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl">
+  <button
+    className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl"
+    type="button"
+    aria-label="Add to cart"
+    title="Add to cart"
+    onClick={() => onAddToCart({
+      id: `Chosen For You-${recom.id}`,
+      source: "Chosen For You",
+      title: recom.title,
+      text: recom.text,
+      image: recom.image,
+      discount: recom.discount,
+      price: recom.price,
+      rating: recom.rating,
+    })}
+  >
     <HiOutlineShoppingBag />
   </button>
 </div>
