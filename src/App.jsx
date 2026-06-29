@@ -15,6 +15,7 @@ import Footer from './components/footer'
 import ScrollTop from './components/scroll'
 
 
+
 function App() {
   return(
     <>
@@ -31,7 +32,6 @@ function App() {
   <CustomerService/>
   <Footer/>
   <ScrollTop/>
-  
   </>
   )
 }

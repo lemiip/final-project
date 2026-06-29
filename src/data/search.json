@@ -1,0 +1,42 @@
+[
+  {
+    "id":1,
+    "name":"ANUA"
+  },
+  {
+    "id":2,
+    "name":"MEDICUBE"
+  },
+  {
+    "id":3,
+    "name":"TORRIDEN"
+  },
+  {
+    "id":4,
+    "name":"MEDIHEAL"
+  },
+  {
+    "id":5,
+    "name":"ROUND LAB"
+  },
+  {
+    "id":6,
+    "name":"SUNSCREEN"
+  },
+  {
+    "id":7,
+    "name":"FWEE"
+  },
+  {
+    "id":8,
+    "name":"REJURAN"
+  },
+  {
+    "id":9,
+    "name":"BEAUTY OF JOSEON"
+  },
+  {
+    "id":10,
+    "name":"CLIO"
+  }
+]

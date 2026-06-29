@@ -1,6 +1,8 @@
 import React from "react";
 import { CiSearch } from "react-icons/ci";
+import searches from "../data/search.json";
 function SearchBar(){
+    
     return(
         <div className="relative">
             <input
@@ -8,6 +10,7 @@ function SearchBar(){
                 type="search"
                 placeholder="Search for a product or brand..."
             />
+            
             <CiSearch className="absolute right-6 font-bold text-[22px] top-1/2 -translate-y-1/2 text-black pointer-events-none" />
         </div>
     )
