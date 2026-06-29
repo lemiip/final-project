@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import React from "react";
 import { PiRobotLight } from "react-icons/pi";
 import { Swiper,SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
+import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
 function AIRecommendation(){
-    const[recommend,useRecom]=useState([])
+    const[recommend,setRecommend]=useState([])
     useEffect(()=>{
-        fetch("/recommend/recommend.json")
-        .then(res=>res.json())
-        .then(data=>useRecom(data))
+        fetchPublicJson("/recommend/recommend.json")
+        .then(data=>setRecommend(data))
+        .catch(()=>setRecommend([]))
     },[])
 
     return(
@@ -30,8 +30,8 @@ Chosen For you
                     </div>
                 </div>
                 <div className="flex gap-3">
-    <button className="swiper-button-prev-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
-    <button className="swiper-button-next-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
+    <button className="ai-swiper-prev text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
+    <button className="ai-swiper-next text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
   </div>
             </div>
             <Swiper
@@ -39,19 +39,23 @@ Chosen For you
 modules={[Navigation]}
 
 navigation={{
-  prevEl: '.swiper-button-prev-custom',
-  nextEl: '.swiper-button-next-custom',
+  prevEl: '.ai-swiper-prev',
+  nextEl: '.ai-swiper-next',
 }}
 
 spaceBetween={25}
 loop={false}
-    slidesPerGroup={5}
-slidesPerView={5}
+slidesPerGroup={1}
+slidesPerView={1.2}
+breakpoints={{
+  768: { slidesPerView: 3, slidesPerGroup: 3 },
+  1024: { slidesPerView: 5, slidesPerGroup: 5 },
+}}
 
 >
 
 {
-recommend.map((recom, index)=>(
+recommend.map((recom)=>(
 
 <SwiperSlide key={recom.id}>
 
@@ -60,9 +64,9 @@ recommend.map((recom, index)=>(
 
 <div className="relative">
 <img
-src={recom.image}
+src={publicUrl(recom.image)}
 className="
-w-[280px]
+w-full
 h-[220px]
 object-cover
 cursor-pointer

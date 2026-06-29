@@ -1,17 +1,17 @@
-import React from "react";
 import { useState,useEffect } from "react";
 import { Swiper,SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
 import { PiGreaterThanLight } from "react-icons/pi";
+import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
 function CardsSection(){
   const[cards,setCards]=useState([])
   useEffect(()=>{
    
-    fetch("/cards/cards.json")
-    .then(res=>res.json())
+    fetchPublicJson("/cards/cards.json")
     .then(data=>setCards(data))
+    .catch(()=>setCards([]))
   },[])
 
     return(
@@ -28,8 +28,8 @@ Best Sellers
    
   </div>
   <div className="flex gap-3">
-    <button className="swiper-button-prev-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
-    <button className="swiper-button-next-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
+    <button className="cards-swiper-prev text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
+    <button className="cards-swiper-next text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
   </div>
 </div>
 
@@ -38,13 +38,18 @@ Best Sellers
 modules={[Navigation]}
 
 navigation={{
-  prevEl: '.swiper-button-prev-custom',
-  nextEl: '.swiper-button-next-custom',
+  prevEl: '.cards-swiper-prev',
+  nextEl: '.cards-swiper-next',
 }}
 
 spaceBetween={25}
 
-slidesPerView={5}
+slidesPerView={1.2}
+slidesPerGroup={1}
+breakpoints={{
+  768: { slidesPerView: 3, slidesPerGroup: 3 },
+  1024: { slidesPerView: 5, slidesPerGroup: 5 },
+}}
 
 >
 
@@ -58,9 +63,9 @@ cards.map((card, index)=>(
 
 <div className="relative">
 <img
-src={card.image}
+src={publicUrl(card.image)}
 className="
-w-[280px]
+w-full
 h-[220px]
 object-cover
 cursor-pointer

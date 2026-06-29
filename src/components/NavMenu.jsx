@@ -1,10 +1,10 @@
-import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { publicUrl } from "../lib/publicUrl";
 function NavMenu(){
     return(
-        <div className="relative">
-            <div className="flex items-center justify-between mx-7 font-bold text-[16px]">
-                <ul className="flex gap-4 items-center cursor-pointer">
+        <div className="relative overflow-x-hidden lg:overflow-visible">
+            <div className="flex items-center justify-between mx-7 font-bold text-[16px] overflow-x-auto lg:overflow-visible">
+                <ul className="flex min-w-max gap-4 items-center cursor-pointer">
                     <li className="text-[23px] hover:text-lime-500 transition-colors duration-300 group relative"><a href="#"><RxHamburgerMenu /></a>
                      <div
     className="
@@ -135,7 +135,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp"
+                src={publicUrl("/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -150,7 +150,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp"
+                src={publicUrl("/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -349,7 +349,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp"
+                src={publicUrl("/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -364,7 +364,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp"
+                src={publicUrl("/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -514,7 +514,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp"
+                src={publicUrl("/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -529,7 +529,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp"
+                src={publicUrl("/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -707,7 +707,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp"
+                src={publicUrl("/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -722,7 +722,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp"
+                src={publicUrl("/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -872,7 +872,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp"
+                src={publicUrl("/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -887,7 +887,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp"
+                src={publicUrl("/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -1036,7 +1036,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp"
+                src={publicUrl("/bannerimg/376c36aa-6a18-43a3-8906-d5264fc9c124.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 
@@ -1051,7 +1051,7 @@ delay-200
             <div>
 
                 <img 
-                src="/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp"
+                src={publicUrl("/bannerimg/265fd36f-af49-4c6f-9360-ee90ee6b3187.webp")}
                 className="w-[250px] h-[300px] object-cover"
                 />
 

@@ -1,12 +1,17 @@
+import { publicUrl } from "../lib/publicUrl";
+
 function CustomerService(){
 
 return(
 
 <section className="
 grid
-grid-cols-2
-gap-20
-px-16
+grid-cols-1
+lg:grid-cols-2
+gap-8
+lg:gap-20
+px-6
+lg:px-16
 py-16
 items-center
 ">
@@ -44,7 +49,7 @@ oycs.global@cj.net
 
 
 
-<div className="flex gap-3">
+<div className="flex flex-col sm:flex-row gap-3">
 
 
 <button className="
@@ -88,7 +93,7 @@ FAQs
 <div>
 
 <img
-src="/bannerimg/dummy-main-customer.png"
+src={publicUrl("/bannerimg/dummy-main-customer.png")}
 className="
 w-full
 h-[300px]

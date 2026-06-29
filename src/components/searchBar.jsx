@@ -1,12 +1,10 @@
-import React from "react";
 import { CiSearch } from "react-icons/ci";
-import searches from "../data/search.json";
 function SearchBar(){
     
     return(
-        <div className="relative">
+        <div className="relative w-full">
             <input
-                className="border h-[37px] md:w-[420px] my-2.5 mx-2 text-[14px] px-2.5 pr-10 outline-none tracking-tight rounded focus:ring-neutral-400 border-lime-500"
+                className="border h-[37px] w-full lg:w-[420px] my-2.5 text-[14px] px-2.5 pr-10 outline-none tracking-tight rounded focus:ring-neutral-400 border-lime-500"
                 type="search"
                 placeholder="Search for a product or brand..."
             />

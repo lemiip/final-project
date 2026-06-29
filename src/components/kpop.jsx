@@ -1,15 +1,15 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import { Swiper,SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
+import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
 function Kpop(){
     const[kpop,setKpop]=useState([])
     useEffect(()=>{
-        fetch("/kpop/kpop.json")
-        .then(res=>res.json())
+        fetchPublicJson("/kpop/kpop.json")
         .then(data=>setKpop(data))
+        .catch(()=>setKpop([]))
     },[])
     return(
         <div className="relative mx-6 py-8 mt-6">
@@ -21,8 +21,8 @@ function Kpop(){
                                 
                             </div>
                             <div className="flex gap-3">
-                <button className="swiper-button-prev-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
-                <button className="swiper-button-next-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
+                <button className="kpop-swiper-prev text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
+                <button className="kpop-swiper-next text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
               </div>
                         </div>
                         <Swiper
@@ -30,19 +30,23 @@ function Kpop(){
             modules={[Navigation]}
             
             navigation={{
-              prevEl: '.swiper-button-prev-custom',
-              nextEl: '.swiper-button-next-custom',
+              prevEl: '.kpop-swiper-prev',
+              nextEl: '.kpop-swiper-next',
             }}
             
             spaceBetween={25}
             loop={false}
-            slidesPerGroup={5}
-            slidesPerView={5}
+            slidesPerGroup={1}
+            slidesPerView={1.2}
+            breakpoints={{
+              768: { slidesPerView: 3, slidesPerGroup: 3 },
+              1024: { slidesPerView: 5, slidesPerGroup: 5 },
+            }}
             
             >
             
             {
-            kpop.map((pop, index)=>(
+            kpop.map((pop)=>(
             
             <SwiperSlide key={pop.id}>
             
@@ -51,9 +55,9 @@ function Kpop(){
             
             <div className="relative">
             <img
-            src={pop.image}
+            src={publicUrl(pop.image)}
             className="
-            w-[280px]
+            w-full
             h-[220px]
             object-cover
             cursor-pointer

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import React from "react";
 import { Swiper,SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
+import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
 function ForYou(){
     const[foryou,setForyou]=useState([])
     useEffect(()=>{
-        fetch("/foryou/foryou.json")
-        .then(res=>res.json())
+        fetchPublicJson("/foryou/foryou.json")
         .then(data=>setForyou(data))
+        .catch(()=>setForyou([]))
     },[])
     return(
              <div className="relative mx-6 py-8 mt-6">
@@ -21,8 +21,8 @@ function ForYou(){
                         
                     </div>
                     <div className="flex gap-3">
-        <button className="swiper-button-prev-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
-        <button className="swiper-button-next-custom text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
+        <button className="foryou-swiper-prev text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
+        <button className="foryou-swiper-next text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
       </div>
                 </div>
                 <Swiper
@@ -30,19 +30,23 @@ function ForYou(){
     modules={[Navigation]}
     
     navigation={{
-      prevEl: '.swiper-button-prev-custom',
-      nextEl: '.swiper-button-next-custom',
+      prevEl: '.foryou-swiper-prev',
+      nextEl: '.foryou-swiper-next',
     }}
     
     spaceBetween={25}
     loop={false}
-    slidesPerGroup={5}
-    slidesPerView={5}
+    slidesPerGroup={1}
+    slidesPerView={1.2}
+    breakpoints={{
+      768: { slidesPerView: 3, slidesPerGroup: 3 },
+      1024: { slidesPerView: 5, slidesPerGroup: 5 },
+    }}
     
     >
     
     {
-    foryou.map((recom, index)=>(
+    foryou.map((recom)=>(
     
     <SwiperSlide key={recom.id}>
     
@@ -51,9 +55,9 @@ function ForYou(){
     
     <div className="relative">
     <img
-    src={recom.image}
+    src={publicUrl(recom.image)}
     className="
-    w-[280px]
+    w-full
     h-[220px]
     object-cover
     cursor-pointer

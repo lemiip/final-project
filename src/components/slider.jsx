@@ -1,23 +1,24 @@
-import React from "react";
 import { useEffect,useState,useRef } from "react";
 import { Swiper,SwiperSlide } from "swiper/react";
 import { Pagination,Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
 function Slider(){
     const[banners,setBanners]=useState([]);
     const[current,setCurrent]=useState(1)
     const swiperRef = useRef(null);
     useEffect(()=>{
-      fetch("/banners/banners.json")
-      .then(res=>res.json())
+      fetchPublicJson("/banners/banners.json")
       .then(data=>setBanners(data))
+      .catch(()=>setBanners([]))
     },[] )
 
      return (
     <div className="mt-5">
 
 
+      {banners.length > 0 && (
       <Swiper
         onSwiper={(s) => (swiperRef.current = s)}
 
@@ -34,7 +35,7 @@ function Slider(){
           delay:4000
         }}
 
-        loop={true}
+        loop={banners.length > 1}
 
         slidesPerView={1.15}
 
@@ -67,7 +68,7 @@ function Slider(){
               bg-center
               "
               style={{
-                backgroundImage:`url(${banner.img})`
+                backgroundImage:`url(${publicUrl(banner.img)})`
               }}
             >
 
@@ -124,6 +125,7 @@ function Slider(){
 
 
       </Swiper>
+      )}
 
 
     
@@ -150,7 +152,7 @@ function Slider(){
         py-2
         "
         >
-          {current} / {banners.length}
+          {banners.length ? current : 0} / {banners.length}
         </div>
 
 

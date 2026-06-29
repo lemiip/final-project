@@ -13,10 +13,13 @@ mt-10
 {/* Links */}
 
 <div className="
-px-16
+px-6
+lg:px-16
 py-12
 grid
-grid-cols-5
+grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-5
 gap-10
 ">
 
@@ -277,7 +280,8 @@ OLIVE YOUNG App
 <div className="
 border-t
 border-gray-200
-px-16
+px-6
+lg:px-16
 py-8
 text-sm
 text-gray-500

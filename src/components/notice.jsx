@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import { fetchPublicJson } from "../lib/publicUrl";
 
 
 function Notice(){
@@ -8,9 +9,9 @@ const [notices,setNotices] = useState([]);
 
 useEffect(()=>{
 
-fetch("/notices/notices.json")
-.then(res=>res.json())
+fetchPublicJson("/notices/notices.json")
 .then(data=>setNotices(data))
+.catch(()=>setNotices([]))
 
 },[]);
 
@@ -22,14 +23,18 @@ return(
 border-y
 border-gray-200
 py-8
-px-16
+px-6
+lg:px-16
 ">
 
 
 <div className="
 flex
+flex-col
+lg:flex-row
 items-center
-gap-20
+gap-8
+lg:gap-20
 ">
 
 

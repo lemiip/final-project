@@ -1,11 +1,11 @@
-import React from "react";
 import { useEffect, useState } from "react";
+import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
 function Unove(){
     const[unove,setUnove]=useState([])
     useEffect(()=>{
-        fetch("/unove/unove.json")
-        .then(res=>res.json())
+        fetchPublicJson("/unove/unove.json")
         .then(data=>setUnove(data))
+        .catch(()=>setUnove([]))
     },[])
     return(
         <div>
@@ -37,7 +37,8 @@ mt-5
 
 <div className="
 grid
-grid-cols-5
+grid-cols-1
+lg:grid-cols-5
 gap-5
 mx-3
 ">
@@ -46,11 +47,11 @@ mx-3
 
 
 <div className="
-col-span-2
+lg:col-span-2
 ">
 
 <video
- src={brand.video}
+ src={publicUrl(brand.video)}
   controls
   className="
     w-full
@@ -82,9 +83,9 @@ p-3
 
 
 <img
-src={product.image}
+src={publicUrl(product.image)}
 className="
-w-[200px]
+w-full
 h-[180px]
 object-fill
 "
