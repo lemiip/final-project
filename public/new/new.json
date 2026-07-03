@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "title": "Flimeal",
+    "text": "[1+1] Flimeal Protein Shake 45g",
+    "price": "US$5.00",
+    "image": "/bannerimg/0215e386-9efa-40e6-afb8-e90d7cacf971.webp",
+    "rating": 4.7
+  },
+  {
+    "id": 2,
+    "title": "Flimeal",
+    "text": "Flimeal Protein Bar Crunch 40g (Dark / White Chocolate)",
+    "price": "US$5.00",
+    "image": "/bannerimg/07a10de6-a0c3-4bbc-b17e-a86a64253e0e.webp",
+    "rating": 4.6
+  },
+  {
+    "id": 3,
+    "title": "ROUND LAB",
+    "text": "ROUND LAB Birch Juice Moisturizing Sun Serum 50ml",
+    "discount": "US$28.00",
+    "price": "US$19.80",
+    "image": "/bannerimg/7a6448f7-c10f-48f5-af40-e6e967f547d8.webp",
+    "rating": 4.8
+  },
+  {
+    "id": 4,
+    "title": "goodal",
+    "text": "goodal Heartleaf Calming Moisture Sun Cream 50ml",
+    "discount": "US$26.00",
+    "price": "US$22.33",
+    "image": "/bannerimg/5e3023d1-10ff-4e2a-a716-a542113bf2fc.webp",
+    "rating": 4.8
+  },
+  {
+    "id": 5,
+    "title": "UNOVE",
+    "text": "UNOVE Deep Damage Repair Hair Mask 320ml",
+    "discount": "US$49.00",
+    "price": "US$33.02",
+    "image": "/bannerimg/4629e142-4168-476a-a654-ee76429b9f8a.webp",
+    "rating": 4.8
+  },
+  {
+    "id": 6,
+    "title": "Torriden",
+    "text": "Torriden Dive In Low Molecular Hyaluronic Acid Mask 20ea",
+    "discount": "US$70.00",
+    "price": "US$35.00",
+    "image": "/bannerimg/505039da-0202-4d3f-8b29-96ad48ecebd7.webp",
+    "rating": 4.7
+  }
+]

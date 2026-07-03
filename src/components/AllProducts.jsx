@@ -1,65 +1,66 @@
 import { useEffect, useState } from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
-import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
+import { loadAllProducts, productDetailsUrl } from "../lib/products";
+import { publicUrl } from "../lib/publicUrl";
 
-function makeProduct(item, source, id) {
-  return {
-    id: `${source}-${item.id || id}`,
-    source,
-    title: item.title || item.artist || item.name,
-    text: item.text || item.album || source,
-    image: item.image,
-    discount: item.discount,
-    price: item.price,
-    rating: item.rating,
-  };
+function getPageTitle(sectionQuery, cleanSearch) {
+  if (cleanSearch) return "Search Results";
+  if (sectionQuery === "Best Sellers") return "Best Sellers";
+  if (sectionQuery === "New") return "New Products";
+  if (sectionQuery === "Sale") return "Sale Products";
+
+  return sectionQuery || "All Products";
 }
 
-function AllProducts({ onAddToCart }) {
+function AllProducts({ onAddToCart, searchQuery = "", sectionQuery = "" }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadProducts() {
-      const [cards, recommend, foryou, kpop, unove] = await Promise.all([
-        fetchPublicJson("/cards/cards.json"),
-        fetchPublicJson("/recommend/recommend.json"),
-        fetchPublicJson("/foryou/foryou.json"),
-        fetchPublicJson("/kpop/kpop.json"),
-        fetchPublicJson("/unove/unove.json"),
-      ]);
-
-      const unoveProducts = unove.flatMap((section) =>
-        section.products.map((product) => makeProduct(product, section.title, product.id))
-      );
-
-      setProducts([
-        ...cards.map((item) => makeProduct(item, "Best Sellers", item.id)),
-        ...recommend.map((item) => makeProduct(item, "Chosen For You", item.id)),
-        ...foryou.map((item) => makeProduct(item, "Recommendations", item.id)),
-        ...unoveProducts,
-        ...kpop.map((item) => makeProduct(item, "K-POP", item.id)),
-      ]);
-      setLoading(false);
-    }
-
-    loadProducts().catch(() => {
-      setProducts([]);
-      setLoading(false);
-    });
+    loadAllProducts()
+      .then((items) => {
+        setProducts(items);
+        setLoading(false);
+      })
+      .catch(() => {
+        setProducts([]);
+        setLoading(false);
+      });
   }, []);
 
+  const cleanSearch = searchQuery.trim().toLowerCase();
+  const cleanSection = sectionQuery.trim().toLowerCase();
+  const sectionProducts = cleanSection === "sale"
+    ? products.filter((product) => product.discount)
+    : cleanSection
+      ? products.filter((product) => product.source.toLowerCase() === cleanSection || product.category?.toLowerCase() === cleanSection)
+      : products;
+  const filteredProducts = cleanSearch
+    ? sectionProducts.filter((product) =>
+        [product.title, product.text, product.source, product.brand, product.category, product.skin]
+          .join(" ")
+          .toLowerCase()
+          .includes(cleanSearch)
+      )
+    : sectionProducts;
+
   return (
-    <main className="px-6 py-10">
+    <main className="px-4 py-8 sm:px-6 sm:py-10">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <a href="#/" className="text-sm text-lime-700 hover:underline">
             Back to home
           </a>
-          <h1 className="mt-3 text-4xl font-bold">All Products</h1>
+          <h1 className="mt-3 break-words text-3xl font-bold sm:text-4xl">
+            {getPageTitle(sectionQuery, cleanSearch)}
+          </h1>
           <p className="mt-2 text-gray-500">
-            {loading ? "Loading products..." : `${products.length} products`}
+            {loading
+              ? "Loading products..."
+              : cleanSearch
+                ? `${filteredProducts.length} results for "${searchQuery}"`
+                : `TOTAL ${filteredProducts.length} items`}
           </p>
         </div>
       </div>
@@ -70,22 +71,30 @@ function AllProducts({ onAddToCart }) {
         </p>
       )}
 
+      {!loading && products.length > 0 && filteredProducts.length === 0 && (
+        <p className="rounded border border-gray-200 p-6 text-gray-500">
+          No products found. Try another search.
+        </p>
+      )}
+
       <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
-        {products.map((product) => (
-          <article key={product.id}>
-            <div className="relative">
+        {filteredProducts.map((product) => (
+          <article key={product.id} className="mx-auto w-full max-w-[360px] min-w-0 overflow-hidden sm:max-w-none">
+            <a href={productDetailsUrl(product.id)} className="relative block">
               <img
                 src={publicUrl(product.image)}
                 alt={product.title}
-                className="h-[220px] w-full object-cover"
+                className="h-[220px] w-full bg-gray-50 object-contain lg:bg-transparent lg:object-cover"
               />
               <span className="absolute left-0 top-0 bg-black px-2 py-1 text-xs font-bold text-white">
                 {product.source}
               </span>
-            </div>
+            </a>
 
             <div className="mt-4 flex items-start justify-between gap-3">
-              <h2 className="font-bold">{product.title}</h2>
+              <a href={productDetailsUrl(product.id)} className="min-w-0 break-words font-bold hover:underline">
+                {product.title}
+              </a>
               <button
                 className="text-xl text-gray-400 hover:text-red-500"
                 type="button"
@@ -97,13 +106,13 @@ function AllProducts({ onAddToCart }) {
               </button>
             </div>
 
-            <p className="mt-2 line-clamp-2 text-sm">{product.text}</p>
+            <p className="mt-2 line-clamp-2 max-w-full whitespace-normal break-words text-sm">{product.text}</p>
 
             {product.discount && (
               <p className="mt-4 text-gray-400 line-through">{product.discount}</p>
             )}
 
-            <p className="mt-1 text-xl font-bold text-red-500">{product.price}</p>
+            <p className="mt-1 break-words text-xl font-bold text-red-500">{product.price}</p>
 
             {product.rating && (
               <p className="mt-3 flex gap-1 text-gray-400">

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "azerbaijan",
+    "name": "Azerbaijan",
+    "code": "AZ"
+  },
+  {
+    "id": "united-states",
+    "name": "United States",
+    "code": "US"
+  },
+  {
+    "id": "turkiye",
+    "name": "Turkiye",
+    "code": "TR"
+  },
+  {
+    "id": "georgia",
+    "name": "Georgia",
+    "code": "GE"
+  },
+  {
+    "id": "germany",
+    "name": "Germany",
+    "code": "DE"
+  },
+  {
+    "id": "united-arab-emirates",
+    "name": "United Arab Emirates",
+    "code": "AE"
+  }
+]

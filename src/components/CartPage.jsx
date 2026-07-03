@@ -11,7 +11,7 @@ function money(value) {
   return `US$${value.toFixed(2)}`;
 }
 
-function CartPage({ cart, updateQuantity, removeFromCart, clearCart }) {
+function CartPage({ cart, updateQuantity, removeFromCart, clearCart, deliveryCountry }) {
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = cart.reduce(
@@ -27,10 +27,10 @@ function CartPage({ cart, updateQuantity, removeFromCart, clearCart }) {
   }
 
   return (
-    <main className="px-6 py-12">
+    <main className="px-4 py-8 sm:px-6 sm:py-12">
       <h1 className="mb-10 text-3xl font-bold">Cart</h1>
 
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_405px]">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,405px)] lg:gap-12">
         <section>
           {cart.length === 0 ? (
             <div className="flex min-h-[330px] flex-col items-center justify-center text-center">
@@ -50,19 +50,19 @@ function CartPage({ cart, updateQuantity, removeFromCart, clearCart }) {
               {cart.map((item) => (
                 <article
                   key={item.id}
-                  className="grid grid-cols-[110px_1fr] gap-5 border-b border-gray-200 pb-5"
+                  className="grid grid-cols-[78px_minmax(0,1fr)] gap-4 border-b border-gray-200 pb-5 sm:grid-cols-[110px_minmax(0,1fr)] sm:gap-5"
                 >
                   <img
                     src={publicUrl(item.image)}
                     alt={item.title}
-                    className="h-[110px] w-[110px] object-cover"
+                    className="h-[78px] w-[78px] object-cover sm:h-[110px] sm:w-[110px]"
                   />
 
                   <div>
                     <div className="flex items-start justify-between gap-4">
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-xs font-bold text-lime-700">{item.source}</p>
-                        <h2 className="mt-1 font-bold">{item.title}</h2>
+                        <h2 className="mt-1 break-words font-bold">{item.title}</h2>
                         <p className="mt-1 line-clamp-2 text-sm text-gray-600">{item.text}</p>
                       </div>
 
@@ -75,8 +75,8 @@ function CartPage({ cart, updateQuantity, removeFromCart, clearCart }) {
                       </button>
                     </div>
 
-                    <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-                      <p className="text-xl font-bold text-red-500">{item.price}</p>
+                    <div className="mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <p className="break-words text-xl font-bold text-red-500">{item.price}</p>
 
                       <div className="flex items-center border border-gray-300">
                         <button
@@ -104,39 +104,45 @@ function CartPage({ cart, updateQuantity, removeFromCart, clearCart }) {
         </section>
 
         <aside>
-          <section className="border border-gray-200 p-8">
+          <section className="border border-gray-200 p-5 sm:p-8">
             <h2 className="mb-10 text-center text-2xl font-bold">Order Preview</h2>
 
             <div className="space-y-5 text-gray-600">
-              <div className="flex justify-between font-bold text-gray-700">
+              <div className="flex justify-between gap-4 font-bold text-gray-700">
                 <span>Subtotal</span>
-                <span>{money(subtotal)}</span>
+                <span className="break-words text-right">{money(subtotal)}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-4">
                 <span>Total Items Value</span>
-                <span>{money(subtotal)}</span>
+                <span className="break-words text-right">{money(subtotal)}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-4">
                 <span>Total Discount</span>
-                <span>-US$0.00</span>
+                <span className="break-words text-right">-US$0.00</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-4">
                 <span className="underline">Shipping</span>
-                <span className="font-bold">FREE</span>
+                <span className="break-words text-right font-bold">FREE</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-4">
+                <span>Delivery Country</span>
+                <span className="max-w-[55%] break-words text-right font-bold">
+                  {deliveryCountry.name} ({deliveryCountry.code})
+                </span>
+              </div>
+              <div className="flex justify-between gap-4">
                 <span className="underline">Estimated Duties</span>
-                <span className="text-red-500">Charged at customs</span>
+                <span className="max-w-[55%] break-words text-right text-red-500">Charged at customs</span>
               </div>
             </div>
 
             <div className="mt-8 border-t border-dashed border-gray-300 pt-5">
-              <div className="flex justify-between text-xl font-bold">
+              <div className="flex justify-between gap-4 text-xl font-bold">
                 <span>
                   Estimated Total
                   <span className="block text-base font-normal">({totalItems} items)</span>
                 </span>
-                <span>{money(subtotal)}</span>
+                <span className="break-words text-right">{money(subtotal)}</span>
               </div>
             </div>
 

@@ -71,5 +71,37 @@
         "album":"V8 - 1st Mini Album [V8] (Compact ver.)",
         "price":"US$15.00",
         "image":"/bannerimg/adbaf517-0318-4633-af89-4352d09c3b64.webp"
+    },
+    {
+        "id":11,
+        "artist":"IVE",
+        "album":"IVE - 4th EP [IVE SECRET] (Random ver.)",
+        "price":"US$21.00",
+        "rating":4.8,
+        "image":"/bannerimg/09f494e1-95a2-43eb-924e-50c0394347ca.webp"
+    },
+    {
+        "id":12,
+        "artist":"LE SSERAFIM",
+        "album":"LE SSERAFIM - Mini Album [HOT] (Compact ver.)",
+        "price":"US$18.50",
+        "rating":4.7,
+        "image":"/bannerimg/1b089ce6-daf4-4c5f-ab10-e6484f027858.webp"
+    },
+    {
+        "id":13,
+        "artist":"TXT",
+        "album":"TXT - Album [The Star Chapter] (Random ver.)",
+        "price":"US$23.00",
+        "rating":4.9,
+        "image":"/bannerimg/44eb5bcc-36bc-4297-b5d1-e81eb45fbb40.webp"
+    },
+    {
+        "id":14,
+        "artist":"NEWJEANS",
+        "album":"NEWJEANS - Album Set (Photobook ver.)",
+        "price":"US$28.00",
+        "rating":5.00,
+        "image":"/bannerimg/456d153f-ac9e-4907-a077-17dc38af152c.webp"
     }
 ]

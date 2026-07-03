@@ -1,24 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import searches from "../data/search.json";
 
 const recentStorageKey = "olive-young-recent-searches";
 
+function getSearchFromHash() {
+    const queryString = window.location.hash.split("?")[1] || "";
+    return new URLSearchParams(queryString).get("search") || "";
+}
+
 function getRecentSearches() {
-    const saved = localStorage.getItem(recentStorageKey);
-    return saved ? JSON.parse(saved) : [];
+    try {
+        const saved = localStorage.getItem(recentStorageKey);
+        return saved ? JSON.parse(saved) : [];
+    } catch {
+        return [];
+    }
 }
 
 function SearchBar(){
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(getSearchFromHash);
     const [open, setOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("popular");
     const [recent, setRecent] = useState(getRecentSearches);
 
-    function handleChange(e) {
-        const nextValue = e.target.value;
-        setValue(nextValue);
-        setOpen(nextValue.trim() === "");
+    useEffect(() => {
+        function updateValue() {
+            setValue(getSearchFromHash());
+        }
+
+        window.addEventListener("hashchange", updateValue);
+        return () => window.removeEventListener("hashchange", updateValue);
+    }, []);
+
+    function goToSearch(text) {
+        const searchText = text.trim();
+        const nextPage = searchText
+            ? `#/products?search=${encodeURIComponent(searchText)}`
+            : "#/products";
+
+        window.location.assign(nextPage);
     }
 
     function saveRecent(text) {
@@ -38,6 +59,7 @@ function SearchBar(){
         setValue(name);
         saveRecent(name);
         setOpen(false);
+        goToSearch(name);
     }
 
     function removeRecent(name) {
@@ -46,36 +68,48 @@ function SearchBar(){
         localStorage.setItem(recentStorageKey, JSON.stringify(nextRecent));
     }
 
-    function handleKeyDown(e) {
-        if (e.key === "Enter") {
-            saveRecent(value);
-            setOpen(false);
-            e.currentTarget.blur();
-        }
+    function handleChange(e) {
+        const nextValue = e.target.value;
+        setValue(nextValue);
+        setOpen(nextValue.trim() === "");
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        saveRecent(value);
+        setOpen(false);
+        goToSearch(value);
     }
     
     return(
-        <div className="relative w-full">
-            <input
-                value={value}
-                onFocus={() => {
-                    if (value.trim() === "") setOpen(true);
-                }}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                onBlur={() => setOpen(false)}
-                className="border h-[37px] w-full lg:w-[420px] my-2.5 text-[14px] px-2.5 pr-10 outline-none tracking-tight rounded focus:ring-neutral-400 border-lime-500"
-                type="search"
-                placeholder="Search for a product or brand..."
-            />
-            
-            <CiSearch className="absolute right-6 font-bold text-[22px] top-1/2 -translate-y-1/2 text-black pointer-events-none" />
+        <div className="relative w-full lg:max-w-[420px]">
+            <form onSubmit={handleSubmit} className="flex w-full">
+                <input
+                    value={value}
+                    onFocus={() => {
+                        if (value.trim() === "") setOpen(true);
+                    }}
+                    onChange={handleChange}
+                    onBlur={() => setOpen(false)}
+                    className="h-[38px] w-full rounded-l border border-lime-500 px-3 text-[14px] outline-none focus:border-lime-700"
+                    type="search"
+                    placeholder="Search for a product or brand..."
+                />
+                <button
+                    type="submit"
+                    className="flex h-[38px] w-12 items-center justify-center rounded-r bg-lime-500 text-xl text-white hover:bg-lime-600"
+                    aria-label="Search"
+                    title="Search"
+                >
+                    <CiSearch />
+                </button>
+            </form>
 
             {open && (
-                <div className="absolute left-0 top-[56px] z-50 w-full lg:w-[420px] rounded border border-lime-500 bg-white shadow-lg">
-                    <div className="grid grid-cols-2 border-b border-gray-200 text-center text-lg font-bold">
+                <div className="absolute left-0 top-12 z-50 w-full rounded border border-lime-500 bg-white shadow-lg">
+                    <div className="grid grid-cols-2 border-b border-gray-200 text-center text-xs font-bold sm:text-sm">
                         <button
-                            className={`py-4 ${activeTab === "recent" ? "border-b-2 border-lime-500" : "text-gray-500"}`}
+                            className={`py-3 ${activeTab === "recent" ? "border-b-2 border-lime-500" : "text-gray-500"}`}
                             type="button"
                             onMouseDown={(e) => {
                                 e.preventDefault();
@@ -85,7 +119,7 @@ function SearchBar(){
                             Recent searches
                         </button>
                         <button
-                            className={`py-4 ${activeTab === "popular" ? "border-b-2 border-lime-500" : "text-gray-500"}`}
+                            className={`py-3 ${activeTab === "popular" ? "border-b-2 border-lime-500" : "text-gray-500"}`}
                             type="button"
                             onMouseDown={(e) => {
                                 e.preventDefault();
@@ -96,27 +130,24 @@ function SearchBar(){
                         </button>
                     </div>
 
-                    <ul className="px-8 py-5">
+                    <ul className="px-5 py-4">
                         {activeTab === "popular" && searches.map((item, index) => (
-                                <li key={item.id}>
-                                    <button
-                                        type="button"
-                                        onMouseDown={() => chooseSearch(item.name)}
-                                        className="flex w-full items-center justify-between py-2 text-left text-[15px] hover:text-lime-600"
-                                    >
-                                        <span className="flex items-center gap-5">
-                                            <span className={index < 3 ? "font-bold text-red-400" : "font-bold text-lime-600"}>
-                                                {index + 1}
-                                            </span>
-                                            <span>{item.name}</span>
-                                        </span>
-                                        <span className="text-xl text-gray-500">-</span>
-                                    </button>
-                                </li>
-                            ))}
+                            <li key={item.id}>
+                                <button
+                                    type="button"
+                                    onMouseDown={() => chooseSearch(item.name)}
+                                    className="flex min-w-0 w-full items-center gap-4 py-2 text-left text-[15px] hover:text-lime-600"
+                                >
+                                    <span className={index < 3 ? "w-5 font-bold text-red-400" : "w-5 font-bold text-lime-600"}>
+                                        {index + 1}
+                                    </span>
+                                    <span className="min-w-0 truncate">{item.name}</span>
+                                </button>
+                            </li>
+                        ))}
 
                         {activeTab === "recent" && recent.length === 0 && (
-                            <li className="py-6 text-center text-sm text-gray-400">
+                            <li className="py-5 text-center text-sm text-gray-400">
                                 No recent searches
                             </li>
                         )}
@@ -127,10 +158,10 @@ function SearchBar(){
                                     <button
                                         type="button"
                                         onMouseDown={() => chooseSearch(item)}
-                                        className="flex items-center gap-5 text-left hover:text-lime-600"
+                                        className="flex min-w-0 items-center gap-4 text-left hover:text-lime-600"
                                     >
-                                        <span className="font-bold text-lime-600">{index + 1}</span>
-                                        <span>{item}</span>
+                                        <span className="w-5 font-bold text-lime-600">{index + 1}</span>
+                                        <span className="min-w-0 truncate">{item}</span>
                                     </button>
                                     <button
                                         type="button"
@@ -138,27 +169,15 @@ function SearchBar(){
                                             e.preventDefault();
                                             removeRecent(item);
                                         }}
-                                        className="text-xl text-gray-500 hover:text-red-400"
+                                        className="text-gray-400 hover:text-red-400"
+                                        aria-label={`Remove ${item} from recent searches`}
                                     >
-                                        -
+                                        x
                                     </button>
                                 </div>
                             </li>
                         ))}
                     </ul>
-
-                    <div className="flex justify-end border-t border-gray-200 px-6 py-4">
-                        <button
-                            type="button"
-                            onMouseDown={(e) => {
-                                e.preventDefault();
-                                setOpen(false);
-                            }}
-                            className="rounded border border-gray-300 px-4 py-1 text-sm hover:bg-gray-100"
-                        >
-                            Close
-                        </button>
-                    </div>
                 </div>
             )}
         </div>

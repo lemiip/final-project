@@ -5,6 +5,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
 import { PiGreaterThanLight } from "react-icons/pi";
 import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
+import { productDetailsUrl } from "../lib/products";
 function CardsSection({ onAddToCart }){
   const[cards,setCards]=useState([])
   useEffect(()=>{
@@ -15,19 +16,20 @@ function CardsSection({ onAddToCart }){
   },[])
 
     return(
-        <div className="relative mx-6 py-8 mt-6">
+        <div className="relative mx-4 mt-6 py-8 sm:mx-6">
 
-<div className="flex justify-between items-center mt-4 mb-9">
+<div className="mb-9 mt-4 flex items-center justify-between gap-4">
   <div className="flex items-center gap-6">
     <h2 className="
-text-3xl
+text-2xl
+sm:text-3xl
 font-bold
 ">
 Best Sellers
 </h2>
    
   </div>
-  <div className="flex gap-3">
+  <div className="shrink-0 gap-3 flex">
     <button className="cards-swiper-prev text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
     <button className="cards-swiper-next text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
   </div>
@@ -47,6 +49,7 @@ spaceBetween={25}
 slidesPerView={1.2}
 slidesPerGroup={1}
 breakpoints={{
+  640: { slidesPerView: 2, slidesPerGroup: 2 },
   768: { slidesPerView: 3, slidesPerGroup: 3 },
   1024: { slidesPerView: 5, slidesPerGroup: 5 },
 }}
@@ -59,15 +62,19 @@ cards.map((card, index)=>(
 <SwiperSlide key={card.id}>
 
 
-<div>
+<div className="min-w-0 overflow-hidden">
 
-<div className="relative">
+<a href={productDetailsUrl(`Best Sellers-${card.id}`)} className="relative block">
 <img
 src={publicUrl(card.image)}
+alt={card.title}
 className="
 w-full
 h-[220px]
-object-cover
+object-contain
+bg-gray-50
+lg:object-cover
+lg:bg-transparent
 cursor-pointer
 "
 />
@@ -75,16 +82,19 @@ cursor-pointer
 <div className="absolute top-0 left-0 bg-black text-white px-2 py-1 text-sm font-bold">
 {index + 1}
 </div>
-</div>
+</a>
 
 <div className="flex justify-between items-start mt-4">
-  <p className="
+  <a href={productDetailsUrl(`Best Sellers-${card.id}`)} className="
 font-bold
 cursor-pointer
 flex-1
+min-w-0
+break-words
+hover:underline
 ">
 {card.title}
-</p>
+</a>
   <button
     className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl"
     type="button"
@@ -111,8 +121,11 @@ text-sm
 line-clamp-2
 mt-2
 cursor-pointer
+break-words
 ">
+<a href={productDetailsUrl(`Best Sellers-${card.id}`)} className="hover:underline">
 {card.text}
+</a>
 </h3>
 
 
@@ -131,6 +144,7 @@ text-red-500
 font-bold
 text-xl
 cursor-pointer
+break-words
 ">
 {card.price}
 </p>

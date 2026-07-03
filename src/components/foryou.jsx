@@ -4,6 +4,7 @@ import { Navigation } from "swiper/modules";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TiStarFullOutline } from "react-icons/ti";
 import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
+import { productDetailsUrl } from "../lib/products";
 function ForYou({ onAddToCart }){
     const[foryou,setForyou]=useState([])
     useEffect(()=>{
@@ -12,15 +13,15 @@ function ForYou({ onAddToCart }){
         .catch(()=>setForyou([]))
     },[])
     return(
-             <div className="relative mx-6 py-8 mt-6">
-                <div className="flex justify-between items-center mt-4 mb-9">
+             <div className="relative mx-4 mt-6 py-8 sm:mx-6">
+                <div className="mb-9 mt-4 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
-                        <h2 className="text-3xl font-bold">
+                        <h2 className="text-2xl font-bold sm:text-3xl">
     Recommendations
                         </h2>
                         
                     </div>
-                    <div className="flex gap-3">
+                    <div className="shrink-0 gap-3 flex">
         <button className="foryou-swiper-prev text-2xl  hover:bg-gray-300 px-3 py-1 rounded">‹</button>
         <button className="foryou-swiper-next text-2xl  hover:bg-gray-300 px-3 py-1 rounded">›</button>
       </div>
@@ -39,6 +40,7 @@ function ForYou({ onAddToCart }){
     slidesPerGroup={1}
     slidesPerView={1.2}
     breakpoints={{
+      640: { slidesPerView: 2, slidesPerGroup: 2 },
       768: { slidesPerView: 3, slidesPerGroup: 3 },
       1024: { slidesPerView: 5, slidesPerGroup: 5 },
     }}
@@ -51,15 +53,19 @@ function ForYou({ onAddToCart }){
     <SwiperSlide key={recom.id}>
     
     
-    <div>
+    <div className="min-w-0 overflow-hidden">
     
-    <div className="relative">
+    <a href={productDetailsUrl(`Recommendations-${recom.id}`)} className="relative block">
     <img
     src={publicUrl(recom.image)}
+    alt={recom.title}
     className="
     w-full
     h-[220px]
-    object-cover
+    object-contain
+    bg-gray-50
+    lg:object-cover
+    lg:bg-transparent
     cursor-pointer
     "
     />
@@ -67,16 +73,19 @@ function ForYou({ onAddToCart }){
     <div className="absolute top-0 left-0 bg-lime-400 text-white px-2 py-1 text-sm font-bold">
     BEST
     </div>
-    </div>
+    </a>
     
     <div className="flex justify-between items-start mt-4">
-      <p className="
+      <a href={productDetailsUrl(`Recommendations-${recom.id}`)} className="
     font-bold
     cursor-pointer
     flex-1
+    min-w-0
+    break-words
+    hover:underline
     ">
     {recom.title}
-    </p>
+    </a>
       <button
         className="text-gray-400 hover:text-red-500 cursor-pointer ml-2 text-xl"
         type="button"
@@ -103,8 +112,11 @@ function ForYou({ onAddToCart }){
     line-clamp-2
     mt-2
     cursor-pointer
+    break-words
     ">
+    <a href={productDetailsUrl(`Recommendations-${recom.id}`)} className="hover:underline">
     {recom.text}
+    </a>
     </h3>
     
     
@@ -123,6 +135,7 @@ function ForYou({ onAddToCart }){
     font-bold
     text-xl
     cursor-pointer
+    break-words
     ">
     {recom.price}
     </p>

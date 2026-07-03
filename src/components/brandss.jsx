@@ -13,10 +13,10 @@ function FeatureBrands(){
     },[])
 
     return(
-        <div className="py-8 px-6">
-            <div className="flex justify-between items-center mt-4 mb-9">
+        <div className="px-4 py-8 sm:px-6">
+            <div className="mb-9 mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3">
-                     <h2 className="text-3xl font-bold mt-5">
+                     <h2 className="mt-5 text-2xl font-bold sm:text-3xl">
 Featured Brands
                     </h2>
                     
@@ -45,9 +45,9 @@ Featured Brands
             >
                 {brands.map((brand) => (
                     <SwiperSlide key={brand.id} className="mt-2 py-2">
-                        <div className="rounded-xl overflow-hidden bg-white shadow-sm p-4 border-b-3 border-b-lime-500 h-[500px]">
-                            <img src={publicUrl(brand.image)} alt={brand.title} className="w-full h-86 object-fill " />
-                            <div className="mt-9 text-center">
+                        <div className="overflow-hidden rounded-xl border-b-3 border-b-lime-500 bg-white p-4 shadow-sm">
+                            <img src={publicUrl(brand.image)} alt={brand.title} className="h-[260px] w-full object-cover sm:h-[340px]" />
+                            <div className="mt-6 text-center sm:mt-9">
                                 <h3 className="text-lg font-semibold">{brand.title}</h3>
                                 <p className="text-gray-500 mt-2 ">{brand.text}</p>
                             </div>

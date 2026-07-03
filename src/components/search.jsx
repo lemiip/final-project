@@ -12,7 +12,7 @@ const [value,setValue] = useState("");
 
 return (
 
-<div className="relative w-[600px]">
+<div className="relative w-full max-w-[600px]">
 
 
 <div
@@ -33,7 +33,8 @@ placeholder="Search for a product or brand..."
 className="
 outline-none
 flex-1
-text-lg
+text-base
+sm:text-lg
 "
 />
 
@@ -63,13 +64,14 @@ z-50
 >
 
 
-<div className="flex h-20">
+<div className="flex min-h-16 sm:h-20">
 
 
 <button
 className="
 w-1/2
-text-xl
+text-base
+sm:text-xl
 font-bold
 text-gray-500
 border-b
@@ -82,7 +84,8 @@ Recent searches
 <button
 className="
 w-1/2
-text-xl
+text-base
+sm:text-xl
 font-bold
 border-2
 border-black
@@ -110,7 +113,8 @@ flex
 items-center
 justify-between
 py-3
-text-xl
+text-base
+sm:text-xl
 "
 >
 

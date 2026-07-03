@@ -23,7 +23,8 @@ return(
 border-y
 border-gray-200
 py-8
-px-6
+px-4
+sm:px-6
 lg:px-16
 ">
 
@@ -57,8 +58,12 @@ notices.map(item=>(
 key={item.id}
 className="
 flex
+flex-col
+sm:flex-row
 justify-between
-items-center
+items-start
+sm:items-center
+gap-3
 py-3
 border-b
 border-gray-100
@@ -70,7 +75,8 @@ border-gray-100
 href="#"
 className="
 text-gray-600
-text-lg
+text-base
+sm:text-lg
 hover:underline
 "
 >
@@ -81,8 +87,10 @@ hover:underline
 
 <div className="
 flex
+flex-wrap
 items-center
-gap-10
+gap-4
+sm:gap-10
 ">
 
 <span className="text-gray-500">
