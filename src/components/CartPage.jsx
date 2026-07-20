@@ -11,19 +11,23 @@ function money(value) {
   return `US$${value.toFixed(2)}`;
 }
 
-function CartPage({ cart, updateQuantity, removeFromCart, clearCart, deliveryCountry }) {
-  const [orderConfirmed, setOrderConfirmed] = useState(false);
+function CartPage({ cart, updateQuantity, removeFromCart, deliveryCountry, currentUser }) {
+  const [loginMessage, setLoginMessage] = useState(false);
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = cart.reduce(
     (sum, item) => sum + priceToNumber(item.price) * item.quantity,
     0
   );
 
-  function confirmOrder() {
+  function goToPayment() {
     if (cart.length === 0) return;
 
-    clearCart();
-    setOrderConfirmed(true);
+    if (!currentUser) {
+      setLoginMessage(true);
+      return;
+    }
+
+    window.location.hash = "#/payment";
   }
 
   return (
@@ -151,16 +155,19 @@ function CartPage({ cart, updateQuantity, removeFromCart, clearCart, deliveryCou
                 cart.length === 0 ? "bg-gray-300 text-gray-500" : "bg-black text-white"
               }`}
               type="button"
-              onClick={confirmOrder}
+              onClick={goToPayment}
               disabled={cart.length === 0}
             >
-              Confirm Order
+              Proceed to Payment
             </button>
 
-            {orderConfirmed && (
-              <p className="mt-4 text-center font-bold text-lime-600">
-                Your order has been confirmed.
-              </p>
+            {loginMessage && cart.length > 0 && (
+              <div className="mt-4 rounded bg-red-50 p-4 text-center text-sm font-bold text-red-500">
+                Please login to pay for your order.
+                <a href="#/login" className="ml-2 underline">
+                  Login
+                </a>
+              </div>
             )}
           </section>
         </aside>

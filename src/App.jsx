@@ -11,6 +11,7 @@ import Navbar from './components/navbar'
 import NavMenu from './components/NavMenu'
 import Slider from './components/slider'
 import AIRecommendation from './components/airecomm'
+import AdminPanel from './components/AdminPanel'
 import FeatureBrands from './components/brandss'
 import ForYou from './components/foryou'
 import Unove from './components/unove'
@@ -19,6 +20,7 @@ import Notice from './components/notice'
 import CustomerService from './components/customer'
 import Footer from './components/footer'
 import LoginForm from './components/LoginForm'
+import PaymentPage from './components/PaymentPage'
 import ProductDetails from './components/ProductDetails'
 import ScrollTop from './components/scroll'
 import countries from './data/countries.json'
@@ -27,6 +29,7 @@ import { findUserById, publicUser } from './lib/users'
 const guestCartStorageKey = 'olive-young-cart'
 const userStorageKey = 'olive-young-user'
 const deliveryCountryStorageKey = 'olive-young-delivery-country'
+const themeStorageKey = 'olive-young-theme'
 
 function getCartStorageKey(user) {
   return user ? `olive-young-cart-${user.id}` : guestCartStorageKey
@@ -55,6 +58,27 @@ function getSavedDeliveryCountry() {
   return countries.find((country) => country.id === savedCountryId) || countries[0]
 }
 
+function getSavedDarkMode() {
+  return localStorage.getItem(themeStorageKey) === 'dark'
+}
+
+function mergeCartItems(savedCart, currentCart) {
+  const mergedItems = [...savedCart]
+
+  currentCart.forEach((cartItem) => {
+    const existingItem = mergedItems.find((item) => item.id === cartItem.id)
+
+    if (existingItem) {
+      existingItem.quantity += cartItem.quantity
+      return
+    }
+
+    mergedItems.push(cartItem)
+  })
+
+  return mergedItems
+}
+
 function getSearchQuery(route) {
   const queryString = route.split('?')[1] || ''
   return new URLSearchParams(queryString).get('search') || ''
@@ -79,10 +103,16 @@ function App() {
   const [currentUser, setCurrentUser] = useState(getSavedUser)
   const [cart, setCart] = useState(() => getSavedCart(currentUser))
   const [deliveryCountry, setDeliveryCountry] = useState(getSavedDeliveryCountry)
+  const [darkMode, setDarkMode] = useState(getSavedDarkMode)
 
   useEffect(() => {
     localStorage.setItem(getCartStorageKey(currentUser), JSON.stringify(cart))
   }, [cart, currentUser])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode)
+    localStorage.setItem(themeStorageKey, darkMode ? 'dark' : 'light')
+  }, [darkMode])
 
   useEffect(() => {
     localStorage.setItem(deliveryCountryStorageKey, deliveryCountry.id)
@@ -132,9 +162,14 @@ function App() {
   }
 
   function login(user) {
+    const savedUserCart = getSavedCart(user)
+    const mergedCart = currentUser ? savedUserCart : mergeCartItems(savedUserCart, cart)
+
     localStorage.setItem(userStorageKey, user.id)
+    localStorage.setItem(getCartStorageKey(user), JSON.stringify(mergedCart))
+    localStorage.setItem(guestCartStorageKey, JSON.stringify([]))
     setCurrentUser(user)
-    setCart(getSavedCart(user))
+    setCart(mergedCart)
   }
 
   function logout() {
@@ -145,6 +180,10 @@ function App() {
 
   function changeDeliveryCountry(country) {
     setDeliveryCountry(country)
+  }
+
+  function toggleDarkMode() {
+    setDarkMode((currentMode) => !currentMode)
   }
 
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
@@ -160,6 +199,8 @@ function App() {
           currentUser={currentUser}
           deliveryCountry={deliveryCountry}
           onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
         />
         <NavMenu/>
         <AllProducts
@@ -181,14 +222,16 @@ function App() {
           currentUser={currentUser}
           deliveryCountry={deliveryCountry}
           onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
         />
         <NavMenu/>
         <CartPage
           cart={cart}
           updateQuantity={updateQuantity}
           removeFromCart={removeFromCart}
-          clearCart={clearCart}
           deliveryCountry={deliveryCountry}
+          currentUser={currentUser}
         />
         <Footer/>
         <ScrollTop/>
@@ -204,9 +247,35 @@ function App() {
           currentUser={currentUser}
           deliveryCountry={deliveryCountry}
           onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
         />
         <NavMenu/>
         <LoginForm currentUser={currentUser} onLogin={login} onLogout={logout}/>
+        <Footer/>
+        <ScrollTop/>
+      </>
+    )
+  }
+
+  if (route === '#/payment') {
+    return (
+      <>
+        <Navbar
+          cartCount={cartCount}
+          currentUser={currentUser}
+          deliveryCountry={deliveryCountry}
+          onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
+        />
+        <NavMenu/>
+        <PaymentPage
+          cart={cart}
+          currentUser={currentUser}
+          deliveryCountry={deliveryCountry}
+          clearCart={clearCart}
+        />
         <Footer/>
         <ScrollTop/>
       </>
@@ -221,6 +290,8 @@ function App() {
           currentUser={currentUser}
           deliveryCountry={deliveryCountry}
           onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
         />
         <NavMenu/>
         <ContactPage/>
@@ -238,9 +309,30 @@ function App() {
           currentUser={currentUser}
           deliveryCountry={deliveryCountry}
           onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
         />
         <NavMenu/>
         <FaqPage/>
+        <Footer/>
+        <ScrollTop/>
+      </>
+    )
+  }
+
+  if (route === '#/admin') {
+    return (
+      <>
+        <Navbar
+          cartCount={cartCount}
+          currentUser={currentUser}
+          deliveryCountry={deliveryCountry}
+          onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
+        />
+        <NavMenu/>
+        <AdminPanel currentUser={currentUser} cart={cart}/>
         <Footer/>
         <ScrollTop/>
       </>
@@ -271,6 +363,8 @@ function App() {
           currentUser={currentUser}
           deliveryCountry={deliveryCountry}
           onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
         />
         <NavMenu/>
         <BrandPage selectedBrand={brandQuery} onAddToCart={addToCart}/>
@@ -292,6 +386,8 @@ function App() {
           currentUser={currentUser}
           deliveryCountry={deliveryCountry}
           onChangeDeliveryCountry={changeDeliveryCountry}
+          darkMode={darkMode}
+          onToggleDarkMode={toggleDarkMode}
         />
         <NavMenu/>
         <ProductDetails
@@ -312,6 +408,8 @@ function App() {
     currentUser={currentUser}
     deliveryCountry={deliveryCountry}
     onChangeDeliveryCountry={changeDeliveryCountry}
+    darkMode={darkMode}
+    onToggleDarkMode={toggleDarkMode}
   />
   <NavMenu/>
   <Slider/>

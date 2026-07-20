@@ -40,7 +40,7 @@ function MenuItem({ href, children }) {
 function UnderlineItem({ href, children, className = "" }) {
   return (
     <li
-      className={`relative transition-colors duration-300 hover:text-lime-500 after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-0 after:bg-lime-500 after:transition-all after:duration-300 hover:after:w-full ${className}`}
+      className={`relative shrink-0 transition-colors duration-300 hover:text-lime-500 after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-0 after:bg-lime-500 after:transition-all after:duration-300 hover:after:w-full ${className}`}
     >
       <MenuLink href={href}>{children}</MenuLink>
     </li>
@@ -288,9 +288,11 @@ function MegaMenu({ children, align = "left" }) {
 
   return (
     <div
-      className={`absolute top-full mt-3 ${positionClass} z-50 hidden w-[calc(100vw-32px)] max-w-[1200px] bg-white p-6 text-black opacity-0 shadow-xl transition-all delay-200 duration-300 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 lg:block xl:p-10`}
+      className={`invisible absolute top-full ${positionClass} z-50 hidden w-[calc(100vw-32px)] max-w-[1200px] translate-y-2 pt-4 text-black opacity-0 transition-all duration-150 pointer-events-none group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto group-focus-within:opacity-100 lg:block`}
     >
-      {children}
+      <div className="bg-white p-6 shadow-xl xl:p-10">
+        {children}
+      </div>
     </div>
   );
 }
@@ -391,7 +393,7 @@ function SuncareMegaMenu() {
 
 function DropdownMenuItem({ href, label, children, className = "" }) {
   return (
-    <li className={`group transition-colors duration-300 hover:text-lime-500 ${className}`}>
+    <li className={`group shrink-0 transition-colors duration-300 hover:text-lime-500 ${className}`}>
       <MenuLink href={href}>{label}</MenuLink>
       {children}
     </li>
@@ -400,10 +402,10 @@ function DropdownMenuItem({ href, label, children, className = "" }) {
 
 function NavMenu() {
   return (
-    <div className="relative overflow-x-hidden border-y border-gray-100 lg:overflow-visible">
-      <div className="flex items-center px-4 py-3 text-sm font-bold sm:px-7 sm:text-[16px] lg:justify-between">
-        <ul className="flex w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-2 lg:w-auto lg:flex-nowrap lg:gap-4">
-          <li className="group text-[23px] transition-colors duration-300 hover:text-lime-500">
+    <div className="relative border-y border-gray-100 lg:overflow-visible">
+      <div className="flex items-center overflow-x-auto px-4 py-3 text-sm font-bold sm:px-7 sm:text-[16px] lg:overflow-visible lg:justify-between">
+        <ul className="flex w-max min-w-full cursor-pointer flex-nowrap items-center gap-4 whitespace-nowrap lg:w-auto lg:min-w-0">
+          <li className="group shrink-0 text-[23px] transition-colors duration-300 hover:text-lime-500">
             <MenuLink href="#/products" className="block" aria-label="All categories">
               <RxHamburgerMenu />
             </MenuLink>
@@ -417,30 +419,33 @@ function NavMenu() {
           <UnderlineItem href="#/new">New</UnderlineItem>
           <UnderlineItem href="#/sale">Sale</UnderlineItem>
           <UnderlineItem href="#/brands">Brands</UnderlineItem>
+          <UnderlineItem href="#/admin">Admin</UnderlineItem>
 
           <li className="mx-2 hidden h-5 w-px bg-gray-300 lg:block" aria-hidden="true"></li>
 
-          <DropdownMenuItem href={productSectionUrl("Skincare")} label="Skincare" className="hidden lg:list-item">
+          <DropdownMenuItem href={productSectionUrl("Skincare")} label="Skincare">
             <SkincareMegaMenu />
           </DropdownMenuItem>
 
-          <DropdownMenuItem href={productSectionUrl("Makeup")} label="Makeup" className="hidden lg:list-item">
+          <DropdownMenuItem href={productSectionUrl("Makeup")} label="Makeup">
             <MakeupMegaMenu />
           </DropdownMenuItem>
 
-          <DropdownMenuItem href={productSearchUrl("Hair")} label="Hair" className="hidden lg:list-item">
+          <DropdownMenuItem href={productSearchUrl("Hair")} label="Hair">
             <HairMegaMenu />
           </DropdownMenuItem>
 
-          <DropdownMenuItem href={productSearchUrl("Mask")} label="Face Masks" className="hidden lg:list-item">
+          <DropdownMenuItem href={productSearchUrl("Mask")} label="Face Masks">
             <FaceMasksMegaMenu />
           </DropdownMenuItem>
 
-          <DropdownMenuItem href={productSectionUrl("Suncare")} label="Suncare" className="hidden lg:list-item">
+          <DropdownMenuItem href={productSectionUrl("Suncare")} label="Suncare">
             <SuncareMegaMenu />
           </DropdownMenuItem>
 
-          <UnderlineItem href="#/kpop" className="hidden sm:list-item">K-pop</UnderlineItem>
+          <UnderlineItem href="#/kpop">K-pop</UnderlineItem>
+          <UnderlineItem href={OY_EVENT_URL} className="lg:hidden">Events</UnderlineItem>
+          <UnderlineItem href={OY_MEMBERSHIP_URL} className="lg:hidden">Membership</UnderlineItem>
         </ul>
 
         <ul className="hidden shrink-0 cursor-pointer items-center gap-6 lg:flex">

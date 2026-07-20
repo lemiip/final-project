@@ -46,7 +46,7 @@ function CustomerService() {
                     <img
                         src={publicUrl("/bannerimg/dummy-main-customer.png")}
                         alt="Customer service"
-                        className="h-[220px] w-full object-cover sm:h-[300px] lg:h-[340px]"
+                        className="h-[220px] w-full object-fill sm:h-[300px] lg:h-[340px]"
                     />
                 </div>
             </div>

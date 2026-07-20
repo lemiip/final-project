@@ -1,12 +1,12 @@
 import { useState } from "react";
 import SearchBar from "./searchBar";
-import { LuUserRound } from "react-icons/lu";
+import { LuMoon, LuSun, LuUserRound } from "react-icons/lu";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { TbWorld } from "react-icons/tb";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import countries from "../data/countries.json";
 
-function Navbar({ cartCount = 0, currentUser, deliveryCountry, onChangeDeliveryCountry }) {
+function Navbar({ cartCount = 0, currentUser, deliveryCountry, onChangeDeliveryCountry, darkMode, onToggleDarkMode }) {
     const [countryModalOpen, setCountryModalOpen] = useState(false);
     const [helpMenuOpen, setHelpMenuOpen] = useState(false);
 
@@ -42,6 +42,15 @@ function Navbar({ cartCount = 0, currentUser, deliveryCountry, onChangeDeliveryC
                         </span>
                     )}
                 </a>
+                <button
+                    type="button"
+                    onClick={onToggleDarkMode}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-lg transition hover:border-lime-500 hover:text-lime-600 sm:h-9 sm:w-9 sm:text-xl"
+                    aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+                    title={darkMode ? "Light mode" : "Dark mode"}
+                >
+                    {darkMode ? <LuSun /> : <LuMoon />}
+                </button>
                 <button
                     type="button"
                     onClick={() => {

@@ -3,6 +3,29 @@ import { Swiper,SwiperSlide } from "swiper/react";
 import { Navigation,Autoplay } from "swiper/modules";
 import { fetchPublicJson, publicUrl } from "../lib/publicUrl";
 
+function productSearchUrl(searchText) {
+    return `#/products?search=${encodeURIComponent(searchText)}`;
+}
+
+function brandUrl(brandName) {
+    return `#/brands?brand=${encodeURIComponent(brandName)}`;
+}
+
+function cleanSearchText(text) {
+    return String(text || "")
+        .replace(/[^\w\s'-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function getBrandHref(brand) {
+    if (brand.href) return brand.href;
+    if (brand.brand) return brandUrl(brand.brand);
+    if (brand.search) return productSearchUrl(brand.search);
+
+    return productSearchUrl(cleanSearchText(brand.title));
+}
+
 function FeatureBrands(){
     const [brands, setBrands] = useState([])
 
@@ -45,13 +68,17 @@ Featured Brands
             >
                 {brands.map((brand) => (
                     <SwiperSlide key={brand.id} className="mt-2 py-2">
-                        <div className="overflow-hidden rounded-xl border-b-3 border-b-lime-500 bg-white p-4 shadow-sm">
+                        <a
+                            href={getBrandHref(brand)}
+                            className="block overflow-hidden rounded-xl border-b-3 border-b-lime-500 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-lime-500 focus-visible:ring-offset-2"
+                            aria-label={`Open ${brand.title.trim()} products`}
+                        >
                             <img src={publicUrl(brand.image)} alt={brand.title} className="h-[260px] w-full object-cover sm:h-[340px]" />
                             <div className="mt-6 text-center sm:mt-9">
                                 <h3 className="text-lg font-semibold">{brand.title}</h3>
                                 <p className="text-gray-500 mt-2 ">{brand.text}</p>
                             </div>
-                        </div>
+                        </a>
                     </SwiperSlide>
                 ))}
             </Swiper>
