@@ -4,6 +4,7 @@ import { LuBoxes, LuPackageSearch, LuTags, LuUserRound } from "react-icons/lu";
 import { TiStarFullOutline } from "react-icons/ti";
 import { loadAllProducts, productDetailsUrl } from "../lib/products";
 import { publicUrl } from "../lib/publicUrl";
+import { getAdminUsers } from "../lib/users";
 
 function parsePrice(price) {
   const value = String(price || "").replace(/[^0-9.]/g, "");
@@ -28,6 +29,7 @@ function StatBox({ icon, label, value }) {
 
 function AdminPanel({ currentUser, cart = [] }) {
   const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState(() => getAdminUsers());
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [sourceFilter, setSourceFilter] = useState("All");
@@ -76,6 +78,9 @@ function AdminPanel({ currentUser, cart = [] }) {
       return matchesSource && matchesSearch;
     });
   }, [products, search, sourceFilter]);
+
+  const registeredCount = users.filter((user) => user.source === "Registered").length;
+  const demoCount = users.length - registeredCount;
 
   return (
     <main className="bg-gray-50 px-4 py-8 sm:px-6 sm:py-10">
@@ -198,6 +203,69 @@ function AdminPanel({ currentUser, cart = [] }) {
                 </tbody>
               </table>
             </div>
+          )}
+        </section>
+
+        <section className="mt-8 rounded border border-gray-200 bg-white">
+          <div className="flex flex-col gap-4 border-b border-gray-200 p-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h2 className="text-xl font-bold">Users</h2>
+              <p className="mt-1 text-sm text-gray-500">
+                {users.length} total users, {registeredCount} registered in this browser
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setUsers(getAdminUsers())}
+              className="h-11 rounded bg-black px-4 text-sm font-bold text-white hover:bg-lime-600"
+            >
+              Refresh Users
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2">
+            <StatBox icon={<LuUserRound />} label="Registered Users" value={registeredCount} />
+            <StatBox icon={<LuUserRound />} label="Demo Users" value={demoCount} />
+          </div>
+
+          <div className="overflow-x-auto border-t border-gray-200">
+            <table className="w-full min-w-[700px] border-collapse text-left text-sm">
+              <thead className="bg-gray-100 text-xs uppercase text-gray-500">
+                <tr>
+                  <th className="px-4 py-3">Name</th>
+                  <th className="px-4 py-3">Email</th>
+                  <th className="px-4 py-3">Username</th>
+                  <th className="px-4 py-3">Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={`${user.source}-${user.id}`} className="border-t border-gray-200">
+                    <td className="px-4 py-4 font-bold">{user.name}</td>
+                    <td className="px-4 py-4 text-gray-600">{user.email}</td>
+                    <td className="px-4 py-4 text-gray-600">{user.id}</td>
+                    <td className="px-4 py-4">
+                      <span
+                        className={`inline-flex rounded px-2 py-1 text-xs font-bold ${
+                          user.source === "Registered"
+                            ? "bg-lime-100 text-lime-700"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {user.source}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {registeredCount === 0 && (
+            <p className="border-t border-gray-200 p-4 text-sm text-gray-500">
+              No registered users in this browser yet.
+            </p>
           )}
         </section>
 

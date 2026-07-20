@@ -15,6 +15,13 @@ export function getAllUsers() {
   return [...users, ...getRegisteredUsers()];
 }
 
+export function getAdminUsers() {
+  return [
+    ...users.map((user) => ({ ...user, source: "Demo" })),
+    ...getRegisteredUsers().map((user) => ({ ...user, source: "Registered" })),
+  ];
+}
+
 export function findUserById(id) {
   return getAllUsers().find((user) => user.id === id);
 }
