@@ -1,0 +1,6 @@
+node_modules/
+dist/
+final-pro/node_modules/
+final-pro/dist/
+.env
+.env.local
